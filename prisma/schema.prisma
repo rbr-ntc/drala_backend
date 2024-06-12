@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String        @id @default(cuid())
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+  email     String        @unique
+  username  String        @unique
+  password  String
+  avatarUrl String?       @map("avatar_url")
+  trips     Trip[]
+  bookmarks Bookmark[]
+  settings  UserSettings?
+
+  @@map("user")
+}
+
+model UserSettings {
+  id            Int      @id @default(autoincrement())
+  userId        String   @unique
+  notifications Boolean  @default(true)
+  language      String   @default("en")
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("user_settings")
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  tripId    String   @map("trip_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("bookmark")
+}
+
+model Trip {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  imageUrl    String?     @map("image_url")
+  userId      String      @map("user_id")
+  startDate   DateTime?   @map("start_date")
+  endDate     DateTime?   @map("end_date")
+  duration    Int?
+  difficulty  Difficulty
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  blocks      Block[]
+  equipment   TripEquipment[]
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  bookmarks   Bookmark[]
+
+  @@map("trip")
+}
+
+model Block {
+  id        String   @id @default(cuid())
+  type      String
+  content   String
+  tripId    String   @map("trip_id")
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  points    Point[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("block")
+}
+
+model Point {
+  id          String   @id @default(cuid())
+  latitude    Float
+  longitude   Float
+  name        String?
+  description String?
+  blockId     String   @map("block_id")
+  block       Block    @relation(fields: [blockId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("point")
+}
+
+model TripEquipment {
+  id          String   @id @default(cuid())
+  tripId      String   @map("trip_id")
+  type        EquipmentType
+  trip        Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("trip_equipment")
+}
+
+enum EquipmentType {
+  TENT
+  ROPE
+  BACKPACK
+  SLEEPING_BAG
+  COOKING_KIT
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
