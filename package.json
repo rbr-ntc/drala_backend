@@ -11,8 +11,8 @@
     "pnpm": "9.x"
   },
   "scripts": {
-    "heroku-postbuild": "pnpm add @nestjs/cli -g &&pnpm add @prisma/client -g && pnpm run build",
-    "build": "nest build && prisma generate",
+    "heroku-postbuild": "pnpm add @nestjs/cli -g && pnpm add @prisma/client -g && pnpm add prisma -g && pnpm run build",
+    "build": "nest build && npx prisma generate",
     "start": "node dist/main",
     "start:dev": "NODE_ENV=development pnpm nest start --watch",
     "start:debug": "pnpm nest start --debug --watch",
@@ -23,8 +23,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy"
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@nestjs/cli": "^10.0.0",
