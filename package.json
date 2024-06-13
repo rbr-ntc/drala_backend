@@ -12,19 +12,19 @@
   },
   "scripts": {
     "heroku-postbuild": "pnpm install && pnpm run build",
-    "build": "nest build && npx prisma generate",
-    "start": "node dist/main",
+    "build": "nest build && pnpx prisma generate",
+    "start": "pnpm run prisma:generate && pnpm run prisma:migrate && node dist/main",
     "start:dev": "NODE_ENV=development pnpm nest start --watch",
     "start:debug": "pnpm nest start --debug --watch",
-    "start:prod": "NODE_ENV=production node dist/main",
+    "start:prod": "NODE_ENV=production pnpm run start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:generate": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate deploy"
+    "prisma:generate": "pnpx prisma generate",
+    "prisma:migrate": "pnpx prisma migrate deploy"
   },
   "dependencies": {
     "@nestjs/cli": "^10.0.0",
