@@ -23,7 +23,7 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: configService.get<string[]>('cors.origin'),
+    origin: configService.get<string[]>('CORS_ORIGIN'),
     credentials: true,
     exposedHeaders: ['set-cookie'],
   });
@@ -46,9 +46,13 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  const port = configService.get<number>('port');
+  const port = configService.get<number>('PORT');
+  if (!port) {
+    throw new Error('PORT environment variable is not defined');
+  }
+
   await app.listen(port);
-  Logger.log('Application is running on: ' + await app.getUrl(), 'Bootstrap');
+  Logger.log('Application is running on: ' + (await app.getUrl()), 'Bootstrap');
 }
 
 bootstrap();
