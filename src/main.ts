@@ -15,6 +15,11 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.use(cookieParser());
   app.use(helmet());
+
+  // Установим trust proxy через Express
+  const expressApp = app.getHttpAdapter().getInstance();
+  expressApp.set('trust proxy', 1);
+
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
@@ -23,7 +28,7 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: configService.get<string[]>('CORS_ORIGIN'),
+    origin: configService.get<string[]>('cors.origin'),
     credentials: true,
     exposedHeaders: ['set-cookie'],
   });
@@ -46,13 +51,9 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  const port = configService.get<number>('PORT');
-  if (!port) {
-    throw new Error('PORT environment variable is not defined');
-  }
-
-  await app.listen(port);
-  Logger.log('Application is running on: ' + (await app.getUrl()), 'Bootstrap');
+  const port = configService.get<number>('port');
+  await app.listen(port || 3000);
+  Logger.log('Application is running on: ' + await app.getUrl(), 'Bootstrap');
 }
 
 bootstrap();
