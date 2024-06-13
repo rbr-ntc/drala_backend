@@ -11,11 +11,11 @@
     "pnpm": "9.x"
   },
   "scripts": {
+    "heroku-postbuild": "pnpm add @nestjs/cli -g && pnpm run build",
     "build": "nest build && prisma generate",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "start:dev": "NODE_ENV=development pnpm nest start --watch",
-    "start:debug": "nest start --debug --watch",
+    "start:debug": "pnpm nest start --debug --watch",
     "start:prod": "NODE_ENV=production node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
@@ -51,7 +51,8 @@
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "swagger-ui-express": "^5.0.1",
-    "winston": "^3.13.0"
+    "winston": "^3.13.0",
+    "@nestjs/cli": "^10.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
