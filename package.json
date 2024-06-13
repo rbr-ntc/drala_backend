@@ -7,11 +7,11 @@
   "license": "UNLICENSED",
   "packageManager": "pnpm@9.1.4",
   "engines": {
-    "node": "19.x",
+    "node": "20.x",
     "pnpm": "9.x"
   },
   "scripts": {
-    "heroku-postbuild": "pnpm setup && pnpm add @nestjs/cli @prisma/client prisma -g && pnpm run build",
+    "heroku-postbuild": "pnpm install && pnpm run build",
     "build": "nest build && npx prisma generate",
     "start": "node dist/main",
     "start:dev": "NODE_ENV=development pnpm nest start --watch",
