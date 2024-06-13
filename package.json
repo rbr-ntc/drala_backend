@@ -11,7 +11,7 @@
     "pnpm": "9.x"
   },
   "scripts": {
-    "heroku-postbuild": "pnpm install --prod=false && pnpm run build",
+    "heroku-postbuild": "pnpm add @nestjs/cli -g &&pnpm add @prisma/client -g && pnpm run build",
     "build": "nest build && prisma generate",
     "start": "node dist/main",
     "start:dev": "NODE_ENV=development pnpm nest start --watch",
