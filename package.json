@@ -5,6 +5,11 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "pnpm@9.1.4",
+  "engines": {
+    "node": "19.x",
+    "pnpm": "9.x"
+  },
   "scripts": {
     "build": "nest build && prisma generate",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
