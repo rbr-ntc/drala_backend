@@ -1,5 +1,15 @@
 // src/user/dto/create-user.dto.ts
-import { IsEmail, IsNotEmpty, IsOptional, IsString, IsUrl, Matches, MaxLength, MinLength } from "class-validator";
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsPhoneNumber,
+  IsString,
+  IsUrl,
+  Matches,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 import { IsUsernameValid } from '../validators/username.validator';
 
 export class CreateUserDto {
@@ -20,6 +30,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsUsernameValid({ message: 'Username must be between 5 and 20 characters long and contain only alphanumeric characters' })
   username: string;
+
+  @IsOptional()
+  @IsPhoneNumber()
+  phone: string;
 
   @IsString()
   @IsOptional()

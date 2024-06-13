@@ -18,6 +18,7 @@ model User {
   username  String        @unique
   password  String
   avatarUrl String?       @map("avatar_url")
+  phone     String?       @unique
   bookmarks Bookmark[]
   trips     Trip[]
   settings  UserSettings?

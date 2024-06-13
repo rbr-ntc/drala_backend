@@ -1564,6 +1564,7 @@ export namespace Prisma {
     username: string | null
     password: string | null
     avatarUrl: string | null
+    phone: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1574,6 +1575,7 @@ export namespace Prisma {
     username: string | null
     password: string | null
     avatarUrl: string | null
+    phone: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1584,6 +1586,7 @@ export namespace Prisma {
     username: number
     password: number
     avatarUrl: number
+    phone: number
     _all: number
   }
 
@@ -1596,6 +1599,7 @@ export namespace Prisma {
     username?: true
     password?: true
     avatarUrl?: true
+    phone?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1606,6 +1610,7 @@ export namespace Prisma {
     username?: true
     password?: true
     avatarUrl?: true
+    phone?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1616,6 +1621,7 @@ export namespace Prisma {
     username?: true
     password?: true
     avatarUrl?: true
+    phone?: true
     _all?: true
   }
 
@@ -1699,6 +1705,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl: string | null
+    phone: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1726,6 +1733,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     avatarUrl?: boolean
+    phone?: boolean
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     trips?: boolean | User$tripsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
@@ -1740,6 +1748,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     avatarUrl?: boolean
+    phone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1750,6 +1759,7 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     avatarUrl?: boolean
+    phone?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1775,6 +1785,7 @@ export namespace Prisma {
       username: string
       password: string
       avatarUrl: string | null
+      phone: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2206,6 +2217,7 @@ export namespace Prisma {
     readonly username: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly avatarUrl: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
   }
     
 
@@ -8713,7 +8725,8 @@ export namespace Prisma {
     email: 'email',
     username: 'username',
     password: 'password',
-    avatarUrl: 'avatarUrl'
+    avatarUrl: 'avatarUrl',
+    phone: 'phone'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8930,6 +8943,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     avatarUrl?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     bookmarks?: BookmarkListRelationFilter
     trips?: TripListRelationFilter
     settings?: XOR<UserSettingsNullableRelationFilter, UserSettingsWhereInput> | null
@@ -8943,6 +8957,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     bookmarks?: BookmarkOrderByRelationAggregateInput
     trips?: TripOrderByRelationAggregateInput
     settings?: UserSettingsOrderByWithRelationInput
@@ -8952,6 +8967,7 @@ export namespace Prisma {
     id?: string
     email?: string
     username?: string
+    phone?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -8962,7 +8978,7 @@ export namespace Prisma {
     bookmarks?: BookmarkListRelationFilter
     trips?: TripListRelationFilter
     settings?: XOR<UserSettingsNullableRelationFilter, UserSettingsWhereInput> | null
-  }, "id" | "email" | "username">
+  }, "id" | "email" | "username" | "phone">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8972,6 +8988,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -8988,6 +9005,7 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type UserSettingsWhereInput = {
@@ -9404,6 +9422,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
     trips?: TripCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
@@ -9417,6 +9436,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
     trips?: TripUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
@@ -9430,6 +9450,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
     trips?: TripUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
@@ -9443,6 +9464,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
     trips?: TripUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
@@ -9456,6 +9478,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9466,6 +9489,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9476,6 +9500,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserSettingsCreateInput = {
@@ -9976,6 +10001,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -9986,6 +10012,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -9996,6 +10023,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrder
+    phone?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11314,6 +11342,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
     trips?: TripCreateNestedManyWithoutUserInput
   }
@@ -11326,6 +11355,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
     trips?: TripUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11354,6 +11384,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
     trips?: TripUpdateManyWithoutUserNestedInput
   }
@@ -11366,6 +11397,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
     trips?: TripUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11415,6 +11447,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     trips?: TripCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
@@ -11427,6 +11460,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     trips?: TripUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
@@ -11498,6 +11532,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     trips?: TripUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
@@ -11510,6 +11545,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     trips?: TripUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
@@ -11574,6 +11610,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
@@ -11586,6 +11623,7 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
+    phone?: string | null
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
@@ -11682,6 +11720,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
@@ -11694,6 +11733,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
