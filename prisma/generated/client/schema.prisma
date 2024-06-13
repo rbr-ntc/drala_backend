@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider      = "prisma-client-js"
   output        = "generated/client"
@@ -13,7 +7,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
@@ -24,8 +18,8 @@ model User {
   username  String        @unique
   password  String
   avatarUrl String?       @map("avatar_url")
-  trips     Trip[]
   bookmarks Bookmark[]
+  trips     Trip[]
   settings  UserSettings?
 
   @@map("user")
@@ -36,9 +30,9 @@ model UserSettings {
   userId        String   @unique
   notifications Boolean  @default(true)
   language      String   @default("en")
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("user_settings")
 }
@@ -47,10 +41,10 @@ model Bookmark {
   id        String   @id @default(cuid())
   userId    String   @map("user_id")
   tripId    String   @map("trip_id")
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("bookmark")
 }
@@ -65,12 +59,12 @@ model Trip {
   endDate     DateTime?       @map("end_date")
   duration    Int?
   difficulty  Difficulty
-  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  blocks      Block[]
-  equipment   TripEquipment[]
   createdAt   DateTime        @default(now()) @map("created_at")
   updatedAt   DateTime        @updatedAt @map("updated_at")
+  blocks      Block[]
   bookmarks   Bookmark[]
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  equipment   TripEquipment[]
 
   @@map("trip")
 }
@@ -80,10 +74,10 @@ model Block {
   type      String
   content   String
   tripId    String   @map("trip_id")
-  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
-  points    Point[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  points    Point[]
 
   @@map("block")
 }
@@ -95,9 +89,9 @@ model Point {
   name        String?
   description String?
   blockId     String   @map("block_id")
-  block       Block    @relation(fields: [blockId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+  block       Block    @relation(fields: [blockId], references: [id], onDelete: Cascade)
 
   @@map("point")
 }
@@ -106,9 +100,9 @@ model TripEquipment {
   id        String        @id @default(cuid())
   tripId    String        @map("trip_id")
   type      EquipmentType
-  trip      Trip          @relation(fields: [tripId], references: [id], onDelete: Cascade)
   createdAt DateTime      @default(now()) @map("created_at")
   updatedAt DateTime      @updatedAt @map("updated_at")
+  trip      Trip          @relation(fields: [tripId], references: [id], onDelete: Cascade)
 
   @@map("trip_equipment")
 }
