@@ -1427,13 +1427,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    trips: number
     bookmarks: number
+    trips: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trips?: boolean | UserCountOutputTypeCountTripsArgs
     bookmarks?: boolean | UserCountOutputTypeCountBookmarksArgs
+    trips?: boolean | UserCountOutputTypeCountTripsArgs
   }
 
   // Custom InputTypes
@@ -1450,15 +1450,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
+  export type UserCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookmarkWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BookmarkWhereInput
+  export type UserCountOutputTypeCountTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TripWhereInput
   }
 
 
@@ -1468,14 +1468,14 @@ export namespace Prisma {
 
   export type TripCountOutputType = {
     blocks: number
-    equipment: number
     bookmarks: number
+    equipment: number
   }
 
   export type TripCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     blocks?: boolean | TripCountOutputTypeCountBlocksArgs
-    equipment?: boolean | TripCountOutputTypeCountEquipmentArgs
     bookmarks?: boolean | TripCountOutputTypeCountBookmarksArgs
+    equipment?: boolean | TripCountOutputTypeCountEquipmentArgs
   }
 
   // Custom InputTypes
@@ -1499,15 +1499,15 @@ export namespace Prisma {
   /**
    * TripCountOutputType without action
    */
-  export type TripCountOutputTypeCountEquipmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripEquipmentWhereInput
+  export type TripCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookmarkWhereInput
   }
 
   /**
    * TripCountOutputType without action
    */
-  export type TripCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BookmarkWhereInput
+  export type TripCountOutputTypeCountEquipmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TripEquipmentWhereInput
   }
 
 
@@ -1726,8 +1726,8 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     avatarUrl?: boolean
-    trips?: boolean | User$tripsArgs<ExtArgs>
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
+    trips?: boolean | User$tripsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1753,8 +1753,8 @@ export namespace Prisma {
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trips?: boolean | User$tripsArgs<ExtArgs>
     bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
+    trips?: boolean | User$tripsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -1763,8 +1763,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      trips: Prisma.$TripPayload<ExtArgs>[]
       bookmarks: Prisma.$BookmarkPayload<ExtArgs>[]
+      trips: Prisma.$TripPayload<ExtArgs>[]
       settings: Prisma.$UserSettingsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2165,9 +2165,9 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    trips<T extends User$tripsArgs<ExtArgs> = {}>(args?: Subset<T, User$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    trips<T extends User$tripsArgs<ExtArgs> = {}>(args?: Subset<T, User$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     settings<T extends User$settingsArgs<ExtArgs> = {}>(args?: Subset<T, User$settingsArgs<ExtArgs>>): Prisma__UserSettingsClient<$Result.GetResult<Prisma.$UserSettingsPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
@@ -2520,26 +2520,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.trips
-   */
-  export type User$tripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Trip
-     */
-    select?: TripSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TripInclude<ExtArgs> | null
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
-    cursor?: TripWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
-  }
-
-  /**
    * User.bookmarks
    */
   export type User$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2557,6 +2537,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
+  }
+
+  /**
+   * User.trips
+   */
+  export type User$tripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trip
+     */
+    select?: TripSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TripInclude<ExtArgs> | null
+    where?: TripWhereInput
+    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
+    cursor?: TripWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
   }
 
   /**
@@ -3758,8 +3758,8 @@ export namespace Prisma {
     tripId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trip?: boolean | TripDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bookmark"]>
 
   export type BookmarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3768,8 +3768,8 @@ export namespace Prisma {
     tripId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trip?: boolean | TripDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bookmark"]>
 
   export type BookmarkSelectScalar = {
@@ -3781,19 +3781,19 @@ export namespace Prisma {
   }
 
   export type BookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trip?: boolean | TripDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type BookmarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trip?: boolean | TripDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $BookmarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bookmark"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       trip: Prisma.$TripPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4191,9 +4191,9 @@ export namespace Prisma {
   export interface Prisma__BookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     trip<T extends TripDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TripDefaultArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4806,10 +4806,10 @@ export namespace Prisma {
     difficulty?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     blocks?: boolean | Trip$blocksArgs<ExtArgs>
-    equipment?: boolean | Trip$equipmentArgs<ExtArgs>
     bookmarks?: boolean | Trip$bookmarksArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    equipment?: boolean | Trip$equipmentArgs<ExtArgs>
     _count?: boolean | TripCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trip"]>
 
@@ -4843,10 +4843,10 @@ export namespace Prisma {
   }
 
   export type TripInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     blocks?: boolean | Trip$blocksArgs<ExtArgs>
-    equipment?: boolean | Trip$equipmentArgs<ExtArgs>
     bookmarks?: boolean | Trip$bookmarksArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    equipment?: boolean | Trip$equipmentArgs<ExtArgs>
     _count?: boolean | TripCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TripIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4856,10 +4856,10 @@ export namespace Prisma {
   export type $TripPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Trip"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       blocks: Prisma.$BlockPayload<ExtArgs>[]
-      equipment: Prisma.$TripEquipmentPayload<ExtArgs>[]
       bookmarks: Prisma.$BookmarkPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+      equipment: Prisma.$TripEquipmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5263,13 +5263,13 @@ export namespace Prisma {
   export interface Prisma__TripClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     blocks<T extends Trip$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Trip$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    equipment<T extends Trip$equipmentArgs<ExtArgs> = {}>(args?: Subset<T, Trip$equipmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripEquipmentPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     bookmarks<T extends Trip$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, Trip$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    equipment<T extends Trip$equipmentArgs<ExtArgs> = {}>(args?: Subset<T, Trip$equipmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripEquipmentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5648,26 +5648,6 @@ export namespace Prisma {
   }
 
   /**
-   * Trip.equipment
-   */
-  export type Trip$equipmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TripEquipment
-     */
-    select?: TripEquipmentSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TripEquipmentInclude<ExtArgs> | null
-    where?: TripEquipmentWhereInput
-    orderBy?: TripEquipmentOrderByWithRelationInput | TripEquipmentOrderByWithRelationInput[]
-    cursor?: TripEquipmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TripEquipmentScalarFieldEnum | TripEquipmentScalarFieldEnum[]
-  }
-
-  /**
    * Trip.bookmarks
    */
   export type Trip$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5685,6 +5665,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
+  }
+
+  /**
+   * Trip.equipment
+   */
+  export type Trip$equipmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TripEquipment
+     */
+    select?: TripEquipmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TripEquipmentInclude<ExtArgs> | null
+    where?: TripEquipmentWhereInput
+    orderBy?: TripEquipmentOrderByWithRelationInput | TripEquipmentOrderByWithRelationInput[]
+    cursor?: TripEquipmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TripEquipmentScalarFieldEnum | TripEquipmentScalarFieldEnum[]
   }
 
   /**
@@ -8930,8 +8930,8 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    trips?: TripListRelationFilter
     bookmarks?: BookmarkListRelationFilter
+    trips?: TripListRelationFilter
     settings?: XOR<UserSettingsNullableRelationFilter, UserSettingsWhereInput> | null
   }
 
@@ -8943,8 +8943,8 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     avatarUrl?: SortOrderInput | SortOrder
-    trips?: TripOrderByRelationAggregateInput
     bookmarks?: BookmarkOrderByRelationAggregateInput
+    trips?: TripOrderByRelationAggregateInput
     settings?: UserSettingsOrderByWithRelationInput
   }
 
@@ -8959,8 +8959,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     password?: StringFilter<"User"> | string
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    trips?: TripListRelationFilter
     bookmarks?: BookmarkListRelationFilter
+    trips?: TripListRelationFilter
     settings?: XOR<UserSettingsNullableRelationFilter, UserSettingsWhereInput> | null
   }, "id" | "email" | "username">
 
@@ -9061,8 +9061,8 @@ export namespace Prisma {
     tripId?: StringFilter<"Bookmark"> | string
     createdAt?: DateTimeFilter<"Bookmark"> | Date | string
     updatedAt?: DateTimeFilter<"Bookmark"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     trip?: XOR<TripRelationFilter, TripWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type BookmarkOrderByWithRelationInput = {
@@ -9071,8 +9071,8 @@ export namespace Prisma {
     tripId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     trip?: TripOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type BookmarkWhereUniqueInput = Prisma.AtLeast<{
@@ -9084,8 +9084,8 @@ export namespace Prisma {
     tripId?: StringFilter<"Bookmark"> | string
     createdAt?: DateTimeFilter<"Bookmark"> | Date | string
     updatedAt?: DateTimeFilter<"Bookmark"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     trip?: XOR<TripRelationFilter, TripWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type BookmarkOrderByWithAggregationInput = {
@@ -9125,10 +9125,10 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     blocks?: BlockListRelationFilter
-    equipment?: TripEquipmentListRelationFilter
     bookmarks?: BookmarkListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    equipment?: TripEquipmentListRelationFilter
   }
 
   export type TripOrderByWithRelationInput = {
@@ -9143,10 +9143,10 @@ export namespace Prisma {
     difficulty?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     blocks?: BlockOrderByRelationAggregateInput
-    equipment?: TripEquipmentOrderByRelationAggregateInput
     bookmarks?: BookmarkOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
+    equipment?: TripEquipmentOrderByRelationAggregateInput
   }
 
   export type TripWhereUniqueInput = Prisma.AtLeast<{
@@ -9164,10 +9164,10 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     blocks?: BlockListRelationFilter
-    equipment?: TripEquipmentListRelationFilter
     bookmarks?: BookmarkListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    equipment?: TripEquipmentListRelationFilter
   }, "id">
 
   export type TripOrderByWithAggregationInput = {
@@ -9404,8 +9404,8 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
-    trips?: TripCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
+    trips?: TripCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
 
@@ -9417,8 +9417,8 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
-    trips?: TripUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
+    trips?: TripUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -9430,8 +9430,8 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    trips?: TripUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
+    trips?: TripUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
 
@@ -9443,8 +9443,8 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    trips?: TripUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
+    trips?: TripUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -9541,8 +9541,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutBookmarksInput
     trip: TripCreateNestedOneWithoutBookmarksInput
+    user: UserCreateNestedOneWithoutBookmarksInput
   }
 
   export type BookmarkUncheckedCreateInput = {
@@ -9557,8 +9557,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
     trip?: TripUpdateOneRequiredWithoutBookmarksNestedInput
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
   }
 
   export type BookmarkUncheckedUpdateInput = {
@@ -9602,10 +9602,10 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutTripsInput
     blocks?: BlockCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
     bookmarks?: BookmarkCreateNestedManyWithoutTripInput
+    user: UserCreateNestedOneWithoutTripsInput
+    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
   }
 
   export type TripUncheckedCreateInput = {
@@ -9621,8 +9621,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     blocks?: BlockUncheckedCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutTripInput
+    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
   }
 
   export type TripUpdateInput = {
@@ -9636,10 +9636,10 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTripsNestedInput
     blocks?: BlockUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
     bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
+    user?: UserUpdateOneRequiredWithoutTripsNestedInput
+    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
   }
 
   export type TripUncheckedUpdateInput = {
@@ -9655,8 +9655,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     blocks?: BlockUncheckedUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutTripNestedInput
+    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
   }
 
   export type TripCreateManyInput = {
@@ -9938,16 +9938,16 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type TripListRelationFilter = {
-    every?: TripWhereInput
-    some?: TripWhereInput
-    none?: TripWhereInput
-  }
-
   export type BookmarkListRelationFilter = {
     every?: BookmarkWhereInput
     some?: BookmarkWhereInput
     none?: BookmarkWhereInput
+  }
+
+  export type TripListRelationFilter = {
+    every?: TripWhereInput
+    some?: TripWhereInput
+    none?: TripWhereInput
   }
 
   export type UserSettingsNullableRelationFilter = {
@@ -9960,11 +9960,11 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type TripOrderByRelationAggregateInput = {
+  export type BookmarkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type BookmarkOrderByRelationAggregateInput = {
+  export type TripOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10449,18 +10449,18 @@ export namespace Prisma {
     _max?: NestedEnumEquipmentTypeFilter<$PrismaModel>
   }
 
-  export type TripCreateNestedManyWithoutUserInput = {
-    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
-    createMany?: TripCreateManyUserInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-  }
-
   export type BookmarkCreateNestedManyWithoutUserInput = {
     create?: XOR<BookmarkCreateWithoutUserInput, BookmarkUncheckedCreateWithoutUserInput> | BookmarkCreateWithoutUserInput[] | BookmarkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutUserInput | BookmarkCreateOrConnectWithoutUserInput[]
     createMany?: BookmarkCreateManyUserInputEnvelope
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
+  }
+
+  export type TripCreateNestedManyWithoutUserInput = {
+    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
+    createMany?: TripCreateManyUserInputEnvelope
+    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
   }
 
   export type UserSettingsCreateNestedOneWithoutUserInput = {
@@ -10469,18 +10469,18 @@ export namespace Prisma {
     connect?: UserSettingsWhereUniqueInput
   }
 
-  export type TripUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
-    createMany?: TripCreateManyUserInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-  }
-
   export type BookmarkUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<BookmarkCreateWithoutUserInput, BookmarkUncheckedCreateWithoutUserInput> | BookmarkCreateWithoutUserInput[] | BookmarkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutUserInput | BookmarkCreateOrConnectWithoutUserInput[]
     createMany?: BookmarkCreateManyUserInputEnvelope
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
+  }
+
+  export type TripUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
+    createMany?: TripCreateManyUserInputEnvelope
+    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
   }
 
   export type UserSettingsUncheckedCreateNestedOneWithoutUserInput = {
@@ -10501,20 +10501,6 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type TripUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutUserInput | TripUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TripCreateManyUserInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutUserInput | TripUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutUserInput | TripUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
-  }
-
   export type BookmarkUpdateManyWithoutUserNestedInput = {
     create?: XOR<BookmarkCreateWithoutUserInput, BookmarkUncheckedCreateWithoutUserInput> | BookmarkCreateWithoutUserInput[] | BookmarkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutUserInput | BookmarkCreateOrConnectWithoutUserInput[]
@@ -10529,17 +10515,7 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
-  export type UserSettingsUpdateOneWithoutUserNestedInput = {
-    create?: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
-    connectOrCreate?: UserSettingsCreateOrConnectWithoutUserInput
-    upsert?: UserSettingsUpsertWithoutUserInput
-    disconnect?: UserSettingsWhereInput | boolean
-    delete?: UserSettingsWhereInput | boolean
-    connect?: UserSettingsWhereUniqueInput
-    update?: XOR<XOR<UserSettingsUpdateToOneWithWhereWithoutUserInput, UserSettingsUpdateWithoutUserInput>, UserSettingsUncheckedUpdateWithoutUserInput>
-  }
-
-  export type TripUncheckedUpdateManyWithoutUserNestedInput = {
+  export type TripUpdateManyWithoutUserNestedInput = {
     create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
     upsert?: TripUpsertWithWhereUniqueWithoutUserInput | TripUpsertWithWhereUniqueWithoutUserInput[]
@@ -10551,6 +10527,16 @@ export namespace Prisma {
     update?: TripUpdateWithWhereUniqueWithoutUserInput | TripUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TripUpdateManyWithWhereWithoutUserInput | TripUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
+  }
+
+  export type UserSettingsUpdateOneWithoutUserNestedInput = {
+    create?: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: UserSettingsCreateOrConnectWithoutUserInput
+    upsert?: UserSettingsUpsertWithoutUserInput
+    disconnect?: UserSettingsWhereInput | boolean
+    delete?: UserSettingsWhereInput | boolean
+    connect?: UserSettingsWhereUniqueInput
+    update?: XOR<XOR<UserSettingsUpdateToOneWithWhereWithoutUserInput, UserSettingsUpdateWithoutUserInput>, UserSettingsUncheckedUpdateWithoutUserInput>
   }
 
   export type BookmarkUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10565,6 +10551,20 @@ export namespace Prisma {
     update?: BookmarkUpdateWithWhereUniqueWithoutUserInput | BookmarkUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BookmarkUpdateManyWithWhereWithoutUserInput | BookmarkUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
+  }
+
+  export type TripUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput> | TripCreateWithoutUserInput[] | TripUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TripCreateOrConnectWithoutUserInput | TripCreateOrConnectWithoutUserInput[]
+    upsert?: TripUpsertWithWhereUniqueWithoutUserInput | TripUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TripCreateManyUserInputEnvelope
+    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
+    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
+    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+    update?: TripUpdateWithWhereUniqueWithoutUserInput | TripUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TripUpdateManyWithWhereWithoutUserInput | TripUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
   }
 
   export type UserSettingsUncheckedUpdateOneWithoutUserNestedInput = {
@@ -10603,24 +10603,16 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserCreateNestedOneWithoutBookmarksInput = {
-    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type TripCreateNestedOneWithoutBookmarksInput = {
     create?: XOR<TripCreateWithoutBookmarksInput, TripUncheckedCreateWithoutBookmarksInput>
     connectOrCreate?: TripCreateOrConnectWithoutBookmarksInput
     connect?: TripWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutBookmarksNestedInput = {
+  export type UserCreateNestedOneWithoutBookmarksInput = {
     create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
     connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
-    upsert?: UserUpsertWithoutBookmarksInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookmarksInput, UserUpdateWithoutBookmarksInput>, UserUncheckedUpdateWithoutBookmarksInput>
   }
 
   export type TripUpdateOneRequiredWithoutBookmarksNestedInput = {
@@ -10631,10 +10623,12 @@ export namespace Prisma {
     update?: XOR<XOR<TripUpdateToOneWithWhereWithoutBookmarksInput, TripUpdateWithoutBookmarksInput>, TripUncheckedUpdateWithoutBookmarksInput>
   }
 
-  export type UserCreateNestedOneWithoutTripsInput = {
-    create?: XOR<UserCreateWithoutTripsInput, UserUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTripsInput
+  export type UserUpdateOneRequiredWithoutBookmarksNestedInput = {
+    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
+    upsert?: UserUpsertWithoutBookmarksInput
     connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookmarksInput, UserUpdateWithoutBookmarksInput>, UserUncheckedUpdateWithoutBookmarksInput>
   }
 
   export type BlockCreateNestedManyWithoutTripInput = {
@@ -10644,18 +10638,24 @@ export namespace Prisma {
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
-  export type TripEquipmentCreateNestedManyWithoutTripInput = {
-    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
-    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
-    createMany?: TripEquipmentCreateManyTripInputEnvelope
-    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-  }
-
   export type BookmarkCreateNestedManyWithoutTripInput = {
     create?: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput> | BookmarkCreateWithoutTripInput[] | BookmarkUncheckedCreateWithoutTripInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutTripInput | BookmarkCreateOrConnectWithoutTripInput[]
     createMany?: BookmarkCreateManyTripInputEnvelope
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutTripsInput = {
+    create?: XOR<UserCreateWithoutTripsInput, UserUncheckedCreateWithoutTripsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTripsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type TripEquipmentCreateNestedManyWithoutTripInput = {
+    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
+    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
+    createMany?: TripEquipmentCreateManyTripInputEnvelope
+    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
   }
 
   export type BlockUncheckedCreateNestedManyWithoutTripInput = {
@@ -10665,18 +10665,18 @@ export namespace Prisma {
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
-  export type TripEquipmentUncheckedCreateNestedManyWithoutTripInput = {
-    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
-    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
-    createMany?: TripEquipmentCreateManyTripInputEnvelope
-    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-  }
-
   export type BookmarkUncheckedCreateNestedManyWithoutTripInput = {
     create?: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput> | BookmarkCreateWithoutTripInput[] | BookmarkUncheckedCreateWithoutTripInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutTripInput | BookmarkCreateOrConnectWithoutTripInput[]
     createMany?: BookmarkCreateManyTripInputEnvelope
     connect?: BookmarkWhereUniqueInput | BookmarkWhereUniqueInput[]
+  }
+
+  export type TripEquipmentUncheckedCreateNestedManyWithoutTripInput = {
+    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
+    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
+    createMany?: TripEquipmentCreateManyTripInputEnvelope
+    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -10695,14 +10695,6 @@ export namespace Prisma {
     set?: $Enums.Difficulty
   }
 
-  export type UserUpdateOneRequiredWithoutTripsNestedInput = {
-    create?: XOR<UserCreateWithoutTripsInput, UserUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTripsInput
-    upsert?: UserUpsertWithoutTripsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTripsInput, UserUpdateWithoutTripsInput>, UserUncheckedUpdateWithoutTripsInput>
-  }
-
   export type BlockUpdateManyWithoutTripNestedInput = {
     create?: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput> | BlockCreateWithoutTripInput[] | BlockUncheckedCreateWithoutTripInput[]
     connectOrCreate?: BlockCreateOrConnectWithoutTripInput | BlockCreateOrConnectWithoutTripInput[]
@@ -10715,20 +10707,6 @@ export namespace Prisma {
     update?: BlockUpdateWithWhereUniqueWithoutTripInput | BlockUpdateWithWhereUniqueWithoutTripInput[]
     updateMany?: BlockUpdateManyWithWhereWithoutTripInput | BlockUpdateManyWithWhereWithoutTripInput[]
     deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
-  }
-
-  export type TripEquipmentUpdateManyWithoutTripNestedInput = {
-    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
-    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
-    upsert?: TripEquipmentUpsertWithWhereUniqueWithoutTripInput | TripEquipmentUpsertWithWhereUniqueWithoutTripInput[]
-    createMany?: TripEquipmentCreateManyTripInputEnvelope
-    set?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    disconnect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    delete?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    update?: TripEquipmentUpdateWithWhereUniqueWithoutTripInput | TripEquipmentUpdateWithWhereUniqueWithoutTripInput[]
-    updateMany?: TripEquipmentUpdateManyWithWhereWithoutTripInput | TripEquipmentUpdateManyWithWhereWithoutTripInput[]
-    deleteMany?: TripEquipmentScalarWhereInput | TripEquipmentScalarWhereInput[]
   }
 
   export type BookmarkUpdateManyWithoutTripNestedInput = {
@@ -10745,6 +10723,28 @@ export namespace Prisma {
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
   }
 
+  export type UserUpdateOneRequiredWithoutTripsNestedInput = {
+    create?: XOR<UserCreateWithoutTripsInput, UserUncheckedCreateWithoutTripsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTripsInput
+    upsert?: UserUpsertWithoutTripsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTripsInput, UserUpdateWithoutTripsInput>, UserUncheckedUpdateWithoutTripsInput>
+  }
+
+  export type TripEquipmentUpdateManyWithoutTripNestedInput = {
+    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
+    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
+    upsert?: TripEquipmentUpsertWithWhereUniqueWithoutTripInput | TripEquipmentUpsertWithWhereUniqueWithoutTripInput[]
+    createMany?: TripEquipmentCreateManyTripInputEnvelope
+    set?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    disconnect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    delete?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    update?: TripEquipmentUpdateWithWhereUniqueWithoutTripInput | TripEquipmentUpdateWithWhereUniqueWithoutTripInput[]
+    updateMany?: TripEquipmentUpdateManyWithWhereWithoutTripInput | TripEquipmentUpdateManyWithWhereWithoutTripInput[]
+    deleteMany?: TripEquipmentScalarWhereInput | TripEquipmentScalarWhereInput[]
+  }
+
   export type BlockUncheckedUpdateManyWithoutTripNestedInput = {
     create?: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput> | BlockCreateWithoutTripInput[] | BlockUncheckedCreateWithoutTripInput[]
     connectOrCreate?: BlockCreateOrConnectWithoutTripInput | BlockCreateOrConnectWithoutTripInput[]
@@ -10759,20 +10759,6 @@ export namespace Prisma {
     deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
-  export type TripEquipmentUncheckedUpdateManyWithoutTripNestedInput = {
-    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
-    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
-    upsert?: TripEquipmentUpsertWithWhereUniqueWithoutTripInput | TripEquipmentUpsertWithWhereUniqueWithoutTripInput[]
-    createMany?: TripEquipmentCreateManyTripInputEnvelope
-    set?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    disconnect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    delete?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
-    update?: TripEquipmentUpdateWithWhereUniqueWithoutTripInput | TripEquipmentUpdateWithWhereUniqueWithoutTripInput[]
-    updateMany?: TripEquipmentUpdateManyWithWhereWithoutTripInput | TripEquipmentUpdateManyWithWhereWithoutTripInput[]
-    deleteMany?: TripEquipmentScalarWhereInput | TripEquipmentScalarWhereInput[]
-  }
-
   export type BookmarkUncheckedUpdateManyWithoutTripNestedInput = {
     create?: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput> | BookmarkCreateWithoutTripInput[] | BookmarkUncheckedCreateWithoutTripInput[]
     connectOrCreate?: BookmarkCreateOrConnectWithoutTripInput | BookmarkCreateOrConnectWithoutTripInput[]
@@ -10785,6 +10771,20 @@ export namespace Prisma {
     update?: BookmarkUpdateWithWhereUniqueWithoutTripInput | BookmarkUpdateWithWhereUniqueWithoutTripInput[]
     updateMany?: BookmarkUpdateManyWithWhereWithoutTripInput | BookmarkUpdateManyWithWhereWithoutTripInput[]
     deleteMany?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
+  }
+
+  export type TripEquipmentUncheckedUpdateManyWithoutTripNestedInput = {
+    create?: XOR<TripEquipmentCreateWithoutTripInput, TripEquipmentUncheckedCreateWithoutTripInput> | TripEquipmentCreateWithoutTripInput[] | TripEquipmentUncheckedCreateWithoutTripInput[]
+    connectOrCreate?: TripEquipmentCreateOrConnectWithoutTripInput | TripEquipmentCreateOrConnectWithoutTripInput[]
+    upsert?: TripEquipmentUpsertWithWhereUniqueWithoutTripInput | TripEquipmentUpsertWithWhereUniqueWithoutTripInput[]
+    createMany?: TripEquipmentCreateManyTripInputEnvelope
+    set?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    disconnect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    delete?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    connect?: TripEquipmentWhereUniqueInput | TripEquipmentWhereUniqueInput[]
+    update?: TripEquipmentUpdateWithWhereUniqueWithoutTripInput | TripEquipmentUpdateWithWhereUniqueWithoutTripInput[]
+    updateMany?: TripEquipmentUpdateManyWithWhereWithoutTripInput | TripEquipmentUpdateManyWithWhereWithoutTripInput[]
+    deleteMany?: TripEquipmentScalarWhereInput | TripEquipmentScalarWhereInput[]
   }
 
   export type TripCreateNestedOneWithoutBlocksInput = {
@@ -11134,48 +11134,6 @@ export namespace Prisma {
     _max?: NestedEnumEquipmentTypeFilter<$PrismaModel>
   }
 
-  export type TripCreateWithoutUserInput = {
-    id?: string
-    name: string
-    description?: string | null
-    imageUrl?: string | null
-    startDate?: Date | string | null
-    endDate?: Date | string | null
-    duration?: number | null
-    difficulty: $Enums.Difficulty
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    blocks?: BlockCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
-    bookmarks?: BookmarkCreateNestedManyWithoutTripInput
-  }
-
-  export type TripUncheckedCreateWithoutUserInput = {
-    id?: string
-    name: string
-    description?: string | null
-    imageUrl?: string | null
-    startDate?: Date | string | null
-    endDate?: Date | string | null
-    duration?: number | null
-    difficulty: $Enums.Difficulty
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    blocks?: BlockUncheckedCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
-    bookmarks?: BookmarkUncheckedCreateNestedManyWithoutTripInput
-  }
-
-  export type TripCreateOrConnectWithoutUserInput = {
-    where: TripWhereUniqueInput
-    create: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput>
-  }
-
-  export type TripCreateManyUserInputEnvelope = {
-    data: TripCreateManyUserInput | TripCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type BookmarkCreateWithoutUserInput = {
     id?: string
     createdAt?: Date | string
@@ -11200,6 +11158,48 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TripCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    duration?: number | null
+    difficulty: $Enums.Difficulty
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blocks?: BlockCreateNestedManyWithoutTripInput
+    bookmarks?: BookmarkCreateNestedManyWithoutTripInput
+    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
+  }
+
+  export type TripUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    duration?: number | null
+    difficulty: $Enums.Difficulty
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blocks?: BlockUncheckedCreateNestedManyWithoutTripInput
+    bookmarks?: BookmarkUncheckedCreateNestedManyWithoutTripInput
+    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
+  }
+
+  export type TripCreateOrConnectWithoutUserInput = {
+    where: TripWhereUniqueInput
+    create: XOR<TripCreateWithoutUserInput, TripUncheckedCreateWithoutUserInput>
+  }
+
+  export type TripCreateManyUserInputEnvelope = {
+    data: TripCreateManyUserInput | TripCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserSettingsCreateWithoutUserInput = {
     notifications?: boolean
     language?: string
@@ -11218,6 +11218,33 @@ export namespace Prisma {
   export type UserSettingsCreateOrConnectWithoutUserInput = {
     where: UserSettingsWhereUniqueInput
     create: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookmarkUpsertWithWhereUniqueWithoutUserInput = {
+    where: BookmarkWhereUniqueInput
+    update: XOR<BookmarkUpdateWithoutUserInput, BookmarkUncheckedUpdateWithoutUserInput>
+    create: XOR<BookmarkCreateWithoutUserInput, BookmarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookmarkUpdateWithWhereUniqueWithoutUserInput = {
+    where: BookmarkWhereUniqueInput
+    data: XOR<BookmarkUpdateWithoutUserInput, BookmarkUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BookmarkUpdateManyWithWhereWithoutUserInput = {
+    where: BookmarkScalarWhereInput
+    data: XOR<BookmarkUpdateManyMutationInput, BookmarkUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BookmarkScalarWhereInput = {
+    AND?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
+    OR?: BookmarkScalarWhereInput[]
+    NOT?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
+    id?: StringFilter<"Bookmark"> | string
+    userId?: StringFilter<"Bookmark"> | string
+    tripId?: StringFilter<"Bookmark"> | string
+    createdAt?: DateTimeFilter<"Bookmark"> | Date | string
+    updatedAt?: DateTimeFilter<"Bookmark"> | Date | string
   }
 
   export type TripUpsertWithWhereUniqueWithoutUserInput = {
@@ -11251,33 +11278,6 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
-  }
-
-  export type BookmarkUpsertWithWhereUniqueWithoutUserInput = {
-    where: BookmarkWhereUniqueInput
-    update: XOR<BookmarkUpdateWithoutUserInput, BookmarkUncheckedUpdateWithoutUserInput>
-    create: XOR<BookmarkCreateWithoutUserInput, BookmarkUncheckedCreateWithoutUserInput>
-  }
-
-  export type BookmarkUpdateWithWhereUniqueWithoutUserInput = {
-    where: BookmarkWhereUniqueInput
-    data: XOR<BookmarkUpdateWithoutUserInput, BookmarkUncheckedUpdateWithoutUserInput>
-  }
-
-  export type BookmarkUpdateManyWithWhereWithoutUserInput = {
-    where: BookmarkScalarWhereInput
-    data: XOR<BookmarkUpdateManyMutationInput, BookmarkUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type BookmarkScalarWhereInput = {
-    AND?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
-    OR?: BookmarkScalarWhereInput[]
-    NOT?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
-    id?: StringFilter<"Bookmark"> | string
-    userId?: StringFilter<"Bookmark"> | string
-    tripId?: StringFilter<"Bookmark"> | string
-    createdAt?: DateTimeFilter<"Bookmark"> | Date | string
-    updatedAt?: DateTimeFilter<"Bookmark"> | Date | string
   }
 
   export type UserSettingsUpsertWithoutUserInput = {
@@ -11314,8 +11314,8 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
-    trips?: TripCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkCreateNestedManyWithoutUserInput
+    trips?: TripCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSettingsInput = {
@@ -11326,8 +11326,8 @@ export namespace Prisma {
     username: string
     password: string
     avatarUrl?: string | null
-    trips?: TripUncheckedCreateNestedManyWithoutUserInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutUserInput
+    trips?: TripUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSettingsInput = {
@@ -11354,8 +11354,8 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    trips?: TripUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUpdateManyWithoutUserNestedInput
+    trips?: TripUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -11366,8 +11366,45 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    trips?: TripUncheckedUpdateManyWithoutUserNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
+    trips?: TripUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type TripCreateWithoutBookmarksInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    duration?: number | null
+    difficulty: $Enums.Difficulty
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blocks?: BlockCreateNestedManyWithoutTripInput
+    user: UserCreateNestedOneWithoutTripsInput
+    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
+  }
+
+  export type TripUncheckedCreateWithoutBookmarksInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    userId: string
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    duration?: number | null
+    difficulty: $Enums.Difficulty
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blocks?: BlockUncheckedCreateNestedManyWithoutTripInput
+    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
+  }
+
+  export type TripCreateOrConnectWithoutBookmarksInput = {
+    where: TripWhereUniqueInput
+    create: XOR<TripCreateWithoutBookmarksInput, TripUncheckedCreateWithoutBookmarksInput>
   }
 
   export type UserCreateWithoutBookmarksInput = {
@@ -11399,41 +11436,47 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
   }
 
-  export type TripCreateWithoutBookmarksInput = {
-    id?: string
-    name: string
-    description?: string | null
-    imageUrl?: string | null
-    startDate?: Date | string | null
-    endDate?: Date | string | null
-    duration?: number | null
-    difficulty: $Enums.Difficulty
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutTripsInput
-    blocks?: BlockCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentCreateNestedManyWithoutTripInput
-  }
-
-  export type TripUncheckedCreateWithoutBookmarksInput = {
-    id?: string
-    name: string
-    description?: string | null
-    imageUrl?: string | null
-    userId: string
-    startDate?: Date | string | null
-    endDate?: Date | string | null
-    duration?: number | null
-    difficulty: $Enums.Difficulty
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    blocks?: BlockUncheckedCreateNestedManyWithoutTripInput
-    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
-  }
-
-  export type TripCreateOrConnectWithoutBookmarksInput = {
-    where: TripWhereUniqueInput
+  export type TripUpsertWithoutBookmarksInput = {
+    update: XOR<TripUpdateWithoutBookmarksInput, TripUncheckedUpdateWithoutBookmarksInput>
     create: XOR<TripCreateWithoutBookmarksInput, TripUncheckedCreateWithoutBookmarksInput>
+    where?: TripWhereInput
+  }
+
+  export type TripUpdateToOneWithWhereWithoutBookmarksInput = {
+    where?: TripWhereInput
+    data: XOR<TripUpdateWithoutBookmarksInput, TripUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type TripUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutTripNestedInput
+    user?: UserUpdateOneRequiredWithoutTripsNestedInput
+    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
+  }
+
+  export type TripUncheckedUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUncheckedUpdateManyWithoutTripNestedInput
+    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
   }
 
   export type UserUpsertWithoutBookmarksInput = {
@@ -11471,47 +11514,56 @@ export namespace Prisma {
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type TripUpsertWithoutBookmarksInput = {
-    update: XOR<TripUpdateWithoutBookmarksInput, TripUncheckedUpdateWithoutBookmarksInput>
-    create: XOR<TripCreateWithoutBookmarksInput, TripUncheckedCreateWithoutBookmarksInput>
-    where?: TripWhereInput
+  export type BlockCreateWithoutTripInput = {
+    id?: string
+    type: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    points?: PointCreateNestedManyWithoutBlockInput
   }
 
-  export type TripUpdateToOneWithWhereWithoutBookmarksInput = {
-    where?: TripWhereInput
-    data: XOR<TripUpdateWithoutBookmarksInput, TripUncheckedUpdateWithoutBookmarksInput>
+  export type BlockUncheckedCreateWithoutTripInput = {
+    id?: string
+    type: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    points?: PointUncheckedCreateNestedManyWithoutBlockInput
   }
 
-  export type TripUpdateWithoutBookmarksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTripsNestedInput
-    blocks?: BlockUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
+  export type BlockCreateOrConnectWithoutTripInput = {
+    where: BlockWhereUniqueInput
+    create: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput>
   }
 
-  export type TripUncheckedUpdateWithoutBookmarksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: BlockUncheckedUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
+  export type BlockCreateManyTripInputEnvelope = {
+    data: BlockCreateManyTripInput | BlockCreateManyTripInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookmarkCreateWithoutTripInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type BookmarkUncheckedCreateWithoutTripInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookmarkCreateOrConnectWithoutTripInput = {
+    where: BookmarkWhereUniqueInput
+    create: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput>
+  }
+
+  export type BookmarkCreateManyTripInputEnvelope = {
+    data: BookmarkCreateManyTripInput | BookmarkCreateManyTripInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutTripsInput = {
@@ -11543,34 +11595,6 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutTripsInput, UserUncheckedCreateWithoutTripsInput>
   }
 
-  export type BlockCreateWithoutTripInput = {
-    id?: string
-    type: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    points?: PointCreateNestedManyWithoutBlockInput
-  }
-
-  export type BlockUncheckedCreateWithoutTripInput = {
-    id?: string
-    type: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    points?: PointUncheckedCreateNestedManyWithoutBlockInput
-  }
-
-  export type BlockCreateOrConnectWithoutTripInput = {
-    where: BlockWhereUniqueInput
-    create: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput>
-  }
-
-  export type BlockCreateManyTripInputEnvelope = {
-    data: BlockCreateManyTripInput | BlockCreateManyTripInput[]
-    skipDuplicates?: boolean
-  }
-
   export type TripEquipmentCreateWithoutTripInput = {
     id?: string
     type: $Enums.EquipmentType
@@ -11595,28 +11619,48 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BookmarkCreateWithoutTripInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutBookmarksInput
+  export type BlockUpsertWithWhereUniqueWithoutTripInput = {
+    where: BlockWhereUniqueInput
+    update: XOR<BlockUpdateWithoutTripInput, BlockUncheckedUpdateWithoutTripInput>
+    create: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput>
   }
 
-  export type BookmarkUncheckedCreateWithoutTripInput = {
-    id?: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type BlockUpdateWithWhereUniqueWithoutTripInput = {
+    where: BlockWhereUniqueInput
+    data: XOR<BlockUpdateWithoutTripInput, BlockUncheckedUpdateWithoutTripInput>
   }
 
-  export type BookmarkCreateOrConnectWithoutTripInput = {
+  export type BlockUpdateManyWithWhereWithoutTripInput = {
+    where: BlockScalarWhereInput
+    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutTripInput>
+  }
+
+  export type BlockScalarWhereInput = {
+    AND?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    OR?: BlockScalarWhereInput[]
+    NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    id?: StringFilter<"Block"> | string
+    type?: StringFilter<"Block"> | string
+    content?: StringFilter<"Block"> | string
+    tripId?: StringFilter<"Block"> | string
+    createdAt?: DateTimeFilter<"Block"> | Date | string
+    updatedAt?: DateTimeFilter<"Block"> | Date | string
+  }
+
+  export type BookmarkUpsertWithWhereUniqueWithoutTripInput = {
     where: BookmarkWhereUniqueInput
+    update: XOR<BookmarkUpdateWithoutTripInput, BookmarkUncheckedUpdateWithoutTripInput>
     create: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput>
   }
 
-  export type BookmarkCreateManyTripInputEnvelope = {
-    data: BookmarkCreateManyTripInput | BookmarkCreateManyTripInput[]
-    skipDuplicates?: boolean
+  export type BookmarkUpdateWithWhereUniqueWithoutTripInput = {
+    where: BookmarkWhereUniqueInput
+    data: XOR<BookmarkUpdateWithoutTripInput, BookmarkUncheckedUpdateWithoutTripInput>
+  }
+
+  export type BookmarkUpdateManyWithWhereWithoutTripInput = {
+    where: BookmarkScalarWhereInput
+    data: XOR<BookmarkUpdateManyMutationInput, BookmarkUncheckedUpdateManyWithoutTripInput>
   }
 
   export type UserUpsertWithoutTripsInput = {
@@ -11654,34 +11698,6 @@ export namespace Prisma {
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type BlockUpsertWithWhereUniqueWithoutTripInput = {
-    where: BlockWhereUniqueInput
-    update: XOR<BlockUpdateWithoutTripInput, BlockUncheckedUpdateWithoutTripInput>
-    create: XOR<BlockCreateWithoutTripInput, BlockUncheckedCreateWithoutTripInput>
-  }
-
-  export type BlockUpdateWithWhereUniqueWithoutTripInput = {
-    where: BlockWhereUniqueInput
-    data: XOR<BlockUpdateWithoutTripInput, BlockUncheckedUpdateWithoutTripInput>
-  }
-
-  export type BlockUpdateManyWithWhereWithoutTripInput = {
-    where: BlockScalarWhereInput
-    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutTripInput>
-  }
-
-  export type BlockScalarWhereInput = {
-    AND?: BlockScalarWhereInput | BlockScalarWhereInput[]
-    OR?: BlockScalarWhereInput[]
-    NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
-    id?: StringFilter<"Block"> | string
-    type?: StringFilter<"Block"> | string
-    content?: StringFilter<"Block"> | string
-    tripId?: StringFilter<"Block"> | string
-    createdAt?: DateTimeFilter<"Block"> | Date | string
-    updatedAt?: DateTimeFilter<"Block"> | Date | string
-  }
-
   export type TripEquipmentUpsertWithWhereUniqueWithoutTripInput = {
     where: TripEquipmentWhereUniqueInput
     update: XOR<TripEquipmentUpdateWithoutTripInput, TripEquipmentUncheckedUpdateWithoutTripInput>
@@ -11709,22 +11725,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TripEquipment"> | Date | string
   }
 
-  export type BookmarkUpsertWithWhereUniqueWithoutTripInput = {
-    where: BookmarkWhereUniqueInput
-    update: XOR<BookmarkUpdateWithoutTripInput, BookmarkUncheckedUpdateWithoutTripInput>
-    create: XOR<BookmarkCreateWithoutTripInput, BookmarkUncheckedCreateWithoutTripInput>
-  }
-
-  export type BookmarkUpdateWithWhereUniqueWithoutTripInput = {
-    where: BookmarkWhereUniqueInput
-    data: XOR<BookmarkUpdateWithoutTripInput, BookmarkUncheckedUpdateWithoutTripInput>
-  }
-
-  export type BookmarkUpdateManyWithWhereWithoutTripInput = {
-    where: BookmarkScalarWhereInput
-    data: XOR<BookmarkUpdateManyMutationInput, BookmarkUncheckedUpdateManyWithoutTripInput>
-  }
-
   export type TripCreateWithoutBlocksInput = {
     id?: string
     name: string
@@ -11736,9 +11736,9 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
+    bookmarks?: BookmarkCreateNestedManyWithoutTripInput
     user: UserCreateNestedOneWithoutTripsInput
     equipment?: TripEquipmentCreateNestedManyWithoutTripInput
-    bookmarks?: BookmarkCreateNestedManyWithoutTripInput
   }
 
   export type TripUncheckedCreateWithoutBlocksInput = {
@@ -11753,8 +11753,8 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
-    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
     bookmarks?: BookmarkUncheckedCreateNestedManyWithoutTripInput
+    equipment?: TripEquipmentUncheckedCreateNestedManyWithoutTripInput
   }
 
   export type TripCreateOrConnectWithoutBlocksInput = {
@@ -11814,9 +11814,9 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
     user?: UserUpdateOneRequiredWithoutTripsNestedInput
     equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
-    bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
   }
 
   export type TripUncheckedUpdateWithoutBlocksInput = {
@@ -11831,8 +11831,8 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
     bookmarks?: BookmarkUncheckedUpdateManyWithoutTripNestedInput
+    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
   }
 
   export type PointUpsertWithWhereUniqueWithoutBlockInput = {
@@ -11928,9 +11928,9 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutTripsInput
     blocks?: BlockCreateNestedManyWithoutTripInput
     bookmarks?: BookmarkCreateNestedManyWithoutTripInput
+    user: UserCreateNestedOneWithoutTripsInput
   }
 
   export type TripUncheckedCreateWithoutEquipmentInput = {
@@ -11976,9 +11976,9 @@ export namespace Prisma {
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTripsNestedInput
     blocks?: BlockUpdateManyWithoutTripNestedInput
     bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
+    user?: UserUpdateOneRequiredWithoutTripsNestedInput
   }
 
   export type TripUncheckedUpdateWithoutEquipmentInput = {
@@ -11997,6 +11997,13 @@ export namespace Prisma {
     bookmarks?: BookmarkUncheckedUpdateManyWithoutTripNestedInput
   }
 
+  export type BookmarkCreateManyUserInput = {
+    id?: string
+    tripId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type TripCreateManyUserInput = {
     id?: string
     name: string
@@ -12008,58 +12015,6 @@ export namespace Prisma {
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type BookmarkCreateManyUserInput = {
-    id?: string
-    tripId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TripUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: BlockUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
-    bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: BlockUncheckedUpdateManyWithoutTripNestedInput
-    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
-    bookmarks?: BookmarkUncheckedUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookmarkUpdateWithoutUserInput = {
@@ -12083,6 +12038,51 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TripUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutTripNestedInput
+    bookmarks?: BookmarkUpdateManyWithoutTripNestedInput
+    equipment?: TripEquipmentUpdateManyWithoutTripNestedInput
+  }
+
+  export type TripUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUncheckedUpdateManyWithoutTripNestedInput
+    bookmarks?: BookmarkUncheckedUpdateManyWithoutTripNestedInput
+    equipment?: TripEquipmentUncheckedUpdateManyWithoutTripNestedInput
+  }
+
+  export type TripUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BlockCreateManyTripInput = {
     id?: string
     type: string
@@ -12091,16 +12091,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type TripEquipmentCreateManyTripInput = {
+  export type BookmarkCreateManyTripInput = {
     id?: string
-    type: $Enums.EquipmentType
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type BookmarkCreateManyTripInput = {
+  export type TripEquipmentCreateManyTripInput = {
     id?: string
-    userId: string
+    type: $Enums.EquipmentType
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12131,27 +12131,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TripEquipmentUpdateWithoutTripInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TripEquipmentUncheckedUpdateWithoutTripInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TripEquipmentUncheckedUpdateManyWithoutTripInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type BookmarkUpdateWithoutTripInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12169,6 +12148,27 @@ export namespace Prisma {
   export type BookmarkUncheckedUpdateManyWithoutTripInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TripEquipmentUpdateWithoutTripInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TripEquipmentUncheckedUpdateWithoutTripInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TripEquipmentUncheckedUpdateManyWithoutTripInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumEquipmentTypeFieldUpdateOperationsInput | $Enums.EquipmentType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
