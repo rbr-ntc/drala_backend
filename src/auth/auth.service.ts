@@ -9,6 +9,7 @@ import { verify } from 'argon2'
 import { Response } from 'express'
 import { UserService } from 'src/user/user.service'
 import { AuthDto } from './dto/auth.dto'
+import { CreateUserDto } from '../user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -42,7 +43,7 @@ export class AuthService {
       ...tokens
     }
   }
-  async register(dto: AuthDto) {
+  async register(dto: CreateUserDto) {
     const oldUser = await this.userService.getByEmail(dto.email)
     if (oldUser) throw new BadRequestException('User already exist')
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
