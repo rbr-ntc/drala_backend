@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import configuration from './config/confiuration'
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { TripModule } from './trip/trip.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UserModule } from './user/user.module';
     }),
     AuthModule,
     UserModule,
+    TripModule,
     // Другие импорты модулей
   ],
   providers: [

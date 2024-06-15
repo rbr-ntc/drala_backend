@@ -4578,18 +4578,8 @@ export namespace Prisma {
 
   export type AggregateTrip = {
     _count: TripCountAggregateOutputType | null
-    _avg: TripAvgAggregateOutputType | null
-    _sum: TripSumAggregateOutputType | null
     _min: TripMinAggregateOutputType | null
     _max: TripMaxAggregateOutputType | null
-  }
-
-  export type TripAvgAggregateOutputType = {
-    duration: number | null
-  }
-
-  export type TripSumAggregateOutputType = {
-    duration: number | null
   }
 
   export type TripMinAggregateOutputType = {
@@ -4600,7 +4590,7 @@ export namespace Prisma {
     userId: string | null
     startDate: Date | null
     endDate: Date | null
-    duration: number | null
+    duration: string | null
     difficulty: $Enums.Difficulty | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4614,7 +4604,7 @@ export namespace Prisma {
     userId: string | null
     startDate: Date | null
     endDate: Date | null
-    duration: number | null
+    duration: string | null
     difficulty: $Enums.Difficulty | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4635,14 +4625,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type TripAvgAggregateInputType = {
-    duration?: true
-  }
-
-  export type TripSumAggregateInputType = {
-    duration?: true
-  }
 
   export type TripMinAggregateInputType = {
     id?: true
@@ -4725,18 +4707,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: TripAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TripSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: TripMinAggregateInputType
@@ -4767,8 +4737,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: TripCountAggregateInputType | true
-    _avg?: TripAvgAggregateInputType
-    _sum?: TripSumAggregateInputType
     _min?: TripMinAggregateInputType
     _max?: TripMaxAggregateInputType
   }
@@ -4781,13 +4749,11 @@ export namespace Prisma {
     userId: string
     startDate: Date | null
     endDate: Date | null
-    duration: number | null
+    duration: string | null
     difficulty: $Enums.Difficulty
     createdAt: Date
     updatedAt: Date
     _count: TripCountAggregateOutputType | null
-    _avg: TripAvgAggregateOutputType | null
-    _sum: TripSumAggregateOutputType | null
     _min: TripMinAggregateOutputType | null
     _max: TripMaxAggregateOutputType | null
   }
@@ -4881,7 +4847,7 @@ export namespace Prisma {
       userId: string
       startDate: Date | null
       endDate: Date | null
-      duration: number | null
+      duration: string | null
       difficulty: $Enums.Difficulty
       createdAt: Date
       updatedAt: Date
@@ -5318,7 +5284,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"Trip", 'String'>
     readonly startDate: FieldRef<"Trip", 'DateTime'>
     readonly endDate: FieldRef<"Trip", 'DateTime'>
-    readonly duration: FieldRef<"Trip", 'Int'>
+    readonly duration: FieldRef<"Trip", 'String'>
     readonly difficulty: FieldRef<"Trip", 'Difficulty'>
     readonly createdAt: FieldRef<"Trip", 'DateTime'>
     readonly updatedAt: FieldRef<"Trip", 'DateTime'>
@@ -9139,7 +9105,7 @@ export namespace Prisma {
     userId?: StringFilter<"Trip"> | string
     startDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
-    duration?: IntNullableFilter<"Trip"> | number | null
+    duration?: StringNullableFilter<"Trip"> | string | null
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
@@ -9178,7 +9144,7 @@ export namespace Prisma {
     userId?: StringFilter<"Trip"> | string
     startDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
-    duration?: IntNullableFilter<"Trip"> | number | null
+    duration?: StringNullableFilter<"Trip"> | string | null
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
@@ -9201,10 +9167,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: TripCountOrderByAggregateInput
-    _avg?: TripAvgOrderByAggregateInput
     _max?: TripMaxOrderByAggregateInput
     _min?: TripMinOrderByAggregateInput
-    _sum?: TripSumOrderByAggregateInput
   }
 
   export type TripScalarWhereWithAggregatesInput = {
@@ -9218,7 +9182,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Trip"> | string
     startDate?: DateTimeNullableWithAggregatesFilter<"Trip"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Trip"> | Date | string | null
-    duration?: IntNullableWithAggregatesFilter<"Trip"> | number | null
+    duration?: StringNullableWithAggregatesFilter<"Trip"> | string | null
     difficulty?: EnumDifficultyWithAggregatesFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
@@ -9623,7 +9587,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9641,7 +9605,7 @@ export namespace Prisma {
     userId: string
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9657,7 +9621,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9675,7 +9639,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9692,7 +9656,7 @@ export namespace Prisma {
     userId: string
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9705,7 +9669,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9719,7 +9683,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10196,17 +10160,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type EnumDifficultyFilter<$PrismaModel = never> = {
     equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
     in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
@@ -10248,10 +10201,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type TripAvgOrderByAggregateInput = {
-    duration?: SortOrder
-  }
-
   export type TripMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -10280,10 +10229,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type TripSumOrderByAggregateInput = {
-    duration?: SortOrder
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -10296,22 +10241,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
@@ -10711,14 +10640,6 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type EnumDifficultyFieldUpdateOperationsInput = {
     set?: $Enums.Difficulty
   }
@@ -11092,33 +11013,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
     in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
@@ -11193,7 +11087,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11209,7 +11103,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11302,7 +11196,7 @@ export namespace Prisma {
     userId?: StringFilter<"Trip"> | string
     startDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Trip"> | Date | string | null
-    duration?: IntNullableFilter<"Trip"> | number | null
+    duration?: StringNullableFilter<"Trip"> | string | null
     difficulty?: EnumDifficultyFilter<"Trip"> | $Enums.Difficulty
     createdAt?: DateTimeFilter<"Trip"> | Date | string
     updatedAt?: DateTimeFilter<"Trip"> | Date | string
@@ -11409,7 +11303,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11426,7 +11320,7 @@ export namespace Prisma {
     userId: string
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11488,7 +11382,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11505,7 +11399,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11772,7 +11666,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11789,7 +11683,7 @@ export namespace Prisma {
     userId: string
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11850,7 +11744,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11867,7 +11761,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11964,7 +11858,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11981,7 +11875,7 @@ export namespace Prisma {
     userId: string
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12012,7 +11906,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12029,7 +11923,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12051,7 +11945,7 @@ export namespace Prisma {
     imageUrl?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
-    duration?: number | null
+    duration?: string | null
     difficulty: $Enums.Difficulty
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12085,7 +11979,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12101,7 +11995,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12117,7 +12011,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
