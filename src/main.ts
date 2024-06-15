@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as cookieParser from 'cookie-parser';
+import * as cookieParser from 'cookie-parser'; // исправленный импорт
 import { Logger, ValidationPipe } from '@nestjs/common';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit'; // измененный импорт
+import rateLimit from 'express-rate-limit';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -13,7 +13,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
-  app.use(cookieParser());
+  app.use(cookieParser()); // вызов функции
   app.use(helmet());
 
   // Установим trust proxy через Express
