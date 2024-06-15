@@ -103,6 +103,7 @@ jobs:
 
   qodana:
     runs-on: ubuntu-latest
+    needs: setup
     permissions:
       contents: write
       pull-requests: write
