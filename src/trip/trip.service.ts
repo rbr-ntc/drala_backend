@@ -7,7 +7,7 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class TripService {
   constructor(private readonly prisma: PrismaService) {}
-//TODO сделать подключение/создания оборудования
+//TODO сделать подключение/создания оборудования!
   async create(createTripDto: CreateTripDto) {
     const duration = this.calculateDuration(createTripDto.startDate, createTripDto.endDate);
     return this.prisma.trip.create({
