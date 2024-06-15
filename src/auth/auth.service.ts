@@ -20,9 +20,9 @@ export class AuthService {
     private jwt: JwtService,
     private userService: UserService
   ) {}
+
   async login(dto: AuthDto) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...user } = await this.validateuUser(dto)
+    const { password, ...user } = await this.validateUser(dto)
     const tokens = this.issueTokens(user.id)
 
     return {
@@ -30,11 +30,11 @@ export class AuthService {
       ...tokens
     }
   }
+
   async getNewTokens(refreshToken: string) {
-    const result = await this.jwt.verify(refreshToken)
+    const result = this.jwt.verify(refreshToken)
     if (!result) throw new UnauthorizedException('Invalid refresh token')
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...user } = await this.userService.getById(result.id)
     const tokens = await this.issueTokens(user.id)
 
@@ -43,18 +43,19 @@ export class AuthService {
       ...tokens
     }
   }
+
   async register(dto: CreateUserDto) {
     const oldUser = await this.userService.getByEmail(dto.email)
-    if (oldUser) throw new BadRequestException('User already exist')
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...user } = await this.userService.create(dto)
+    if (oldUser) throw new BadRequestException('User already exists')
 
+    const { password, ...user } = await this.userService.create(dto)
     const tokens = this.issueTokens(user.id)
     return {
       user,
       ...tokens
     }
   }
+
   private issueTokens(userId: string) {
     const data = { id: userId }
 
@@ -67,13 +68,12 @@ export class AuthService {
     return { accessToken, refreshToken }
   }
 
-  private async validateuUser(dto: AuthDto) {
+  private async validateUser(dto: AuthDto) {
     const user = await this.userService.getByEmail(dto.email)
     if (!user) throw new NotFoundException('User not found')
 
     const isValid = await verify(user.password, dto.password)
-
-    if (!isValid) throw new UnauthorizedException('password is invalid')
+    if (!isValid) throw new UnauthorizedException('Invalid password')
 
     return user
   }
@@ -90,7 +90,7 @@ export class AuthService {
     })
   }
 
-  removeRefreshTokenToResponse(res: Response) {
+  removeRefreshTokenFromResponse(res: Response) { // исправлено название метода
     res.cookie(this.REFRESH_TOKEN_NAME, '', {
       httpOnly: true,
       domain: 'localhost',
