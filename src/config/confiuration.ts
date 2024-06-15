@@ -1,10 +1,11 @@
-// config/configuration.ts
-export default () => ({
-  port: parseInt(process.env.PORT!, 10) || 3000,
-  database: {
-    url: process.env.DATABASE_URL!,
-  },
+import * as dotenv from 'dotenv';
+import { registerAs } from '@nestjs/config';
+
+dotenv.config();
+
+export default registerAs('app', () => ({
+  port: parseInt(process.env.PORT || '3000', 10),
   cors: {
-    origin: process.env.CORS_ORIGIN!,
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000'],
   },
-});
+}));
