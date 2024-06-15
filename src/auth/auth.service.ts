@@ -60,10 +60,10 @@ export class AuthService {
     const data = { id: userId };
 
     const accessToken = this.jwt.sign(data, {
-      expiresIn: '1h' as const
+      expiresIn: '1h'
     });
     const refreshToken = this.jwt.sign(data, {
-      expiresIn: '7d' as const
+      expiresIn: '7d'
     });
     return { accessToken, refreshToken };
   }
