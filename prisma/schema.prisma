@@ -57,7 +57,7 @@ model Trip {
   userId      String          @map("user_id")
   startDate   DateTime?       @map("start_date")
   endDate     DateTime?       @map("end_date")
-  duration    Int?
+  duration    String?
   difficulty  Difficulty
   createdAt   DateTime        @default(now()) @map("created_at")
   updatedAt   DateTime        @updatedAt @map("updated_at")
@@ -95,7 +95,7 @@ model Point {
 
   @@map("point")
 }
-
+//TODO сделать мани ту мани свзяи с обуродование для оптимизации хранения
 model TripEquipment {
   id        String        @id @default(cuid())
   tripId    String        @map("trip_id")
