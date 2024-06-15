@@ -20,7 +20,7 @@ async function bootstrap() {
   }));
 
   app.enableCors({
-    origin: configService.get<string[]>('cors.origin'),
+    origin: configService.get<string[]>('app.cors.origin'),
     credentials: true,
     exposedHeaders: ['set-cookie'],
   });
