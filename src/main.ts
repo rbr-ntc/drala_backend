@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as cookieParser from 'cookie-parser'; // исправленный импорт
+import cookieParser from 'cookie-parser';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -9,23 +9,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
-  app.use(cookieParser()); // вызов функции
+  app.use(cookieParser());
   app.use(helmet());
-
-  // Установим trust proxy через Express
-  const expressApp = app.getHttpAdapter().getInstance();
-  expressApp.set('trust proxy', 1);
-
-  app.use(
-    rateLimit({
-      windowMs: 15 * 60 * 1000, // 15 minutes
-      max: 100, // limit each IP to 100 requests per windowMs
-    }),
-  );
+  app.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+  }));
 
   app.enableCors({
     origin: configService.get<string[]>('cors.origin'),
@@ -33,13 +25,11 @@ async function bootstrap() {
     exposedHeaders: ['set-cookie'],
   });
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-    }),
-  );
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
+  }));
 
   if (configService.get<string>('NODE_ENV') !== 'production') {
     const options = new DocumentBuilder()
@@ -51,8 +41,8 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  const port = configService.get<number>('port');
-  await app.listen(port || 3000);
+  const port = configService.get<number>('port') || 3000;
+  await app.listen(port);
   Logger.log('Application is running on: ' + await app.getUrl(), 'Bootstrap');
 }
 
