@@ -5,7 +5,7 @@ import { registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorCon
 export class IsUsernameValidConstraint implements ValidatorConstraintInterface {
   validate(username: string): boolean {
     const regex = /^[a-zA-Z0-9]+$/;
-    return typeof username === 'string' && regex.test(username) && username.length >= 5 && username.length <= 20;
+    return regex.test(username) && username.length >= 5 && username.length <= 20;
   }
 
   defaultMessage(): string {
