@@ -13,8 +13,8 @@ import { CreateUserDto } from '../user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
-  private readonly EXPIRE_DAY_REFRESH_TOKEN = 1;
-  private readonly REFRESH_TOKEN_NAME = 'refreshToken';
+  public readonly EXPIRE_DAY_REFRESH_TOKEN = 1;
+  public readonly REFRESH_TOKEN_NAME = 'refreshToken';
 
   constructor(
     private readonly jwt: JwtService,
@@ -60,10 +60,10 @@ export class AuthService {
     const data = { id: userId };
 
     const accessToken = this.jwt.sign(data, {
-      expiresIn: '1h'
+      expiresIn: '1h' as const
     });
     const refreshToken = this.jwt.sign(data, {
-      expiresIn: '7d'
+      expiresIn: '7d' as const
     });
     return { accessToken, refreshToken };
   }
